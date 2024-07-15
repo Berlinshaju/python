@@ -24,45 +24,7 @@
 <body>
     <h1>Covid-19 Updates</h1>
     <div id="jsonData" class="json-container">
-        Loading JSON data...
+        <pre>Confirmed Cases: {{ cases }}\nDeaths: {{ deaths }}\nRecovered: {{ recovered }}</pre>
     </div>
-
-    <script>
-        async function fetchData() {
-            try {
-                const response = await fetch("https://berlinshaju.github.io/python_projects/");
-                const data = await response.json();
-                displayJsonData(data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                document.getElementById('jsonData').innerHTML = "Error loading data.";
-            }
-        }
-
-        function displayJsonData(data) {
-            const text = `Confirmed Cases: ${data.cases}\nDeaths: ${data.deaths}\nRecovered: ${data.recovered}`;
-            const jsonDataDiv = document.getElementById('jsonData');
-            jsonDataDiv.innerHTML = `<pre>${text}</pre>`;
-            // Show a browser notification
-            if (Notification.permission === "granted") {
-                new Notification("Covid-19 Updates", { body: text });
-            }
-        }
-
-        // Request notification permission
-        if (Notification.permission !== "granted") {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted") {
-                    fetchData(); // Fetch data initially if permission is granted
-                }
-            });
-        }
-
-        // Fetch data initially
-        fetchData();
-
-        // Update data every 60 seconds
-        setInterval(fetchData, 60000);
-    </script>
 </body>
 </html>
