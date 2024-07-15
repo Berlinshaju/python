@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .json-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Data Display</h1>
+    <div id="jsonData" class="json-container">
+        Loading JSON data...
+    </div>
+
+    <script>
+        // Example JSON data
+        const jsonData = {
+            "cases": 123456,
+            "deaths": 7890,
+            "recovered": 54321
+        };
+
+        // Function to display JSON data
+        function displayJsonData(data) {
+            const jsonDataDiv = document.getElementById('jsonData');
+            jsonDataDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        // Display the JSON data when the page loads
+        document.addEventListener('DOMContentLoaded', (event) => {
+            displayJsonData(jsonData);
+        });
+    </script>
+</body>
+</html>
