@@ -2,5 +2,6 @@
  **pip install virtualenv**
  
  **pip install pyautogui**
- support python version 3.11
+ 
+ __support python version 3.11__
 # 1.Screenshot - https://github.com/Berlinshaju/python/blob/main/screenshot.py
